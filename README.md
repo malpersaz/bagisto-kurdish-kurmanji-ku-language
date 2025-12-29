@@ -4,36 +4,35 @@ This package provides Kurdish (Kurmanji) translations for Bagisto E-commerce pla
 
 ## Installation
 
-### 1. Copy Language Files
-Copy the `lang` folder from this package to the root directory of your Bagisto project.
-This will add the Kurdish translations to `lang/ku` and override the default package translations using `lang/vendor`.
+### 1. Install via Composer
+You can install the package via composer:
 
 ```bash
-cp -r lang/ your-bagisto-project-root/
+composer require malpersaz/bagisto-kurdish-package
 ```
 
-### 2. Add Locale to Database
-Run the following SQL command in your database to register the Kurdish locale:
+### 2. Publish Assets
+Publish the language files to your project:
 
-```sql
-INSERT INTO locales (code, name, direction, created_at, updated_at) VALUES ('ku', 'Kurdî', 'ltr', NOW(), NOW());
+```bash
+php artisan vendor:publish --tag=bagisto-kurdish-lang
 ```
 
-You can also do this via the Admin Panel:
-1. Go to **Settings -> Locales**.
-2. Click **Add Locale**.
-3. Code: `ku`
-4. Name: `Kurdî`
-5. Direction: `LTR`
+### 3. Run Migrations
+This package includes a migration to register the Kurdish ('ku') locale in the database. Run the migration:
 
-### 3. Configuration
+```bash
+php artisan migrate
+```
+
+### 4. Configuration
 Open your `.env` file and set the locale:
 
 ```
 APP_LOCALE=ku
 ```
 
-### 4. Clear Cache
+### 5. Clear Cache
 Clear the application cache to load the new translations:
 
 ```bash
@@ -42,4 +41,3 @@ php artisan optimize:clear
 
 ## Contributing
 Feel free to contribute to this repository by submitting pull requests.
-
